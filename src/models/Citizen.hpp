@@ -1,32 +1,54 @@
 #pragma once
 
 #include <string>
-
-// #include "Person.hpp"
+#include <stdexcept>
+#include "Person.hpp"
 #include "Address.hpp"
 #include "Date.hpp"
 
-class Citizen{
-
+class Citizen : public Person {
 private:
-
     int id;
-    std::string name;
     std::string secondName;
-    std::string surname;
     std::string pesel;
     Date dateBirth;
-    // std::string address;
     Address address;
 
 public:
-    Citizen(std::string _name, std::string _secondName, std::string _surname, std::string _pesel, Date _dateBairth, Address _address) :
-        name(_name),
-        secondName(_secondName),
-        surname(_surname),
-        pesel(_pesel),
-        dateBirth(_dateBairth),
-        address(_address) 
-        {}
-    
+    Citizen(
+        int         _id,
+        std::string _name,
+        std::string _secondName,
+        std::string _surname,
+        std::string _pesel,
+        Date        _dateBirth,
+        Address     _address
+    )
+        : Person(std::move(_name), std::move(_surname))
+        , id(_id)
+        , secondName(std::move(_secondName))
+        , pesel(std::move(_pesel))
+        , dateBirth(_dateBirth)
+        , address(std::move(_address))
+    {
+        if (pesel.empty())
+            throw std::invalid_argument("PESEL cannot be empty");
+    }
+
+    int                getId()         const { return id; }
+    const std::string& getSecondName() const { return secondName; }
+    const std::string& getPesel()      const { return pesel; }
+    const Date&        getDateBirth()  const { return dateBirth; }
+    const Address&     getAddress()    const { return address; }
+
+
+    std::string getFullName() const override {
+        if (secondName.empty())
+            return name + " " + surname;
+        return name + " " + secondName + " " + surname;
+    }
+
+    void updateAddress(Address newAddress) {
+        address = std::move(newAddress);
+    }
 };
