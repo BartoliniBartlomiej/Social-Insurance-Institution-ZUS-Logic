@@ -21,7 +21,7 @@ public:
    
 };
 
-std::ostream& operator<<(std::ostream& os, const Address& a) {
+inline std::ostream& operator<<(std::ostream& os, const Address& a) {
     os << a.getStreet() << ", " << a.getCity() << ", " << a.getPostalCode();
     return os;
 }
