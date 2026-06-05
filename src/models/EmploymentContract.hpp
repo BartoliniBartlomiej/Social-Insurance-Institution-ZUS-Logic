@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <stdexcept>
 
 #include "Date.hpp"
 
@@ -77,6 +78,8 @@ public:
 
     void expire() {
         if (!isActive())
-            throw std::logic_error("Cannot expire a contract that is not active")
+            throw std::logic_error("Cannot expire a contract that is not active");
+        
+        status = ContractStatus::Expired;
     }
 };
