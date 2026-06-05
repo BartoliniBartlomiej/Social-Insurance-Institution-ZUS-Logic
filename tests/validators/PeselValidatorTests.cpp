@@ -6,6 +6,14 @@ TEST(PeselValidatorTest, PeselToShort) {
     EXPECT_FALSE(PeselValidator::isValid("123123123"));
 }
 
+TEST(PeselValidatorTest, PeselEmpty) {
+    EXPECT_FALSE(PeselValidator::isValid(""));
+}
+
+TEST(PeselValidatorTest, PeselContainsLetter) {
+    EXPECT_FALSE(PeselValidator::isValid("9704134750L"));
+}
+
 TEST(PeselValidatorTest, PeselToLong) {
     EXPECT_FALSE(PeselValidator::isValid("123123123123"));
 }
