@@ -30,6 +30,10 @@ struct Date {
         return pad(day) + "." + pad(month) + "." + std::to_string(year);
     }
 
+    std::string toSqlString() const {
+        return std::to_string(year) + "-" + pad(month) + "-" + pad(day);
+    }
+
 private:
     void validate() const {
         if (month < 1 || month > 12)
