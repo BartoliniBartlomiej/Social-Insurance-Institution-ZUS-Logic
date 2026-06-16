@@ -23,7 +23,6 @@ namespace {
     }
 }
 
-// ── createDeclaration ─────────────────────────────────────────────────────────
 
 TEST(DeclarationServiceTest, CreateDeclarationUoP) {
     InMemoryContractRepository contractRepo;
@@ -91,7 +90,6 @@ TEST(DeclarationServiceTest, CreateDeclarationInactiveContractThrows) {
     );
 }
 
-// ── submitDeclaration ─────────────────────────────────────────────────────────
 
 TEST(DeclarationServiceTest, SubmitDeclaration) {
     InMemoryContractRepository contractRepo;
@@ -113,7 +111,6 @@ TEST(DeclarationServiceTest, SubmitNonExistingThrows) {
     EXPECT_THROW(service.submitDeclaration(99), std::logic_error);
 }
 
-// ── acceptDeclaration ─────────────────────────────────────────────────────────
 
 TEST(DeclarationServiceTest, AcceptDeclaration) {
     InMemoryContractRepository contractRepo;

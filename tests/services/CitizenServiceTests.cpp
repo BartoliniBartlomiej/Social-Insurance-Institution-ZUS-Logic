@@ -13,8 +13,6 @@ namespace {
     }
 }
 
-// ── registerCitizen ───────────────────────────────────────────────────────────
-
 TEST(CitizenServiceTest, RegisterValidCitizen) {
     InMemoryCitizenRepository repo;
     CitizenService service(repo);
@@ -44,7 +42,6 @@ TEST(CitizenServiceTest, RegisterDuplicatePeselThrows) {
     EXPECT_EQ(repo.size(), 1);
 }
 
-// ── getCitizen ────────────────────────────────────────────────────────────────
 
 TEST(CitizenServiceTest, GetExistingCitizen) {
     InMemoryCitizenRepository repo;
@@ -62,7 +59,6 @@ TEST(CitizenServiceTest, GetNonExistingCitizenThrows) {
     EXPECT_THROW(service.getCitizen(99), std::logic_error);
 }
 
-// ── getCitizenByPesel ─────────────────────────────────────────────────────────
 
 TEST(CitizenServiceTest, GetByValidPesel) {
     InMemoryCitizenRepository repo;
@@ -80,7 +76,6 @@ TEST(CitizenServiceTest, GetByInvalidPeselThrows) {
     EXPECT_THROW(service.getCitizenByPesel("12345678901"), std::invalid_argument);
 }
 
-// ── updateAddress ─────────────────────────────────────────────────────────────
 
 TEST(CitizenServiceTest, UpdateAddress) {
     InMemoryCitizenRepository repo;
