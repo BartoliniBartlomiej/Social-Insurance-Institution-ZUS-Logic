@@ -3,7 +3,7 @@
 #include <cctype>
 #include "../models/Date.hpp"
 
-int getMonth(int month)
+inline int getMonth(int month)
 {
     return month % 20 == 0 ? 12 : month % 20;
 }
